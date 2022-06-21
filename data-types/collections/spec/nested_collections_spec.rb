@@ -12,7 +12,7 @@ RSpec.describe 'Nested Collections' do
     coordinates = [[2,5],[87,2],[56,39],[3,46]]
     # Using the coordinates variable defined above
     # Retrive the value 39
-    thirty_nine = _________
+    thirty_nine = coordinates[2][1]
     expect(thirty_nine).to eq(39)
   end
 
@@ -20,7 +20,7 @@ RSpec.describe 'Nested Collections' do
     coordinates = [[2,5],[87,2],[56,39],[3,46]]
     # Using the coordinates variable defined above
     # set the last coordinates to [6, 55]
-    _________
+    coordinates[4] = [6,55]
 
     expected = [[2,5],[87,2],[56,39],[6,55]]
     expect(coordinates).to eq(expected)
@@ -31,7 +31,7 @@ RSpec.describe 'Nested Collections' do
     # Using the coordinates variable defined above
     # set the second element of the last coordinates
     # to 0
-    ________
+    coordinates[3][1] = 0
 
     expected = [[2,5],[87,2],[56,39],[3, 0]]
     expect(coordinates).to eq(expected)
@@ -41,7 +41,7 @@ RSpec.describe 'Nested Collections' do
     coordinates = [[2,5],[87,2],[56,39],[3,46]]
     # Using the coordinates variable defined above
     # add the coordinate [4, 14]
-    _________
+    coordinates[4] = [4,14]
 
     expected = [[2,5],[87,2],[56,39],[3,46],[4, 14]]
     expect(coordinates).to eq(expected)
@@ -55,7 +55,7 @@ RSpec.describe 'Nested Collections' do
     }
     # Using the team variable defined above
     # retrieve all of the pitchers
-    pitchers = _________
+    pitchers = team.values_at(:pitchers)
     expected = ["Kenny", "Joan", "Shabaz"]
     expect(pitchers).to eq(expected)
   end
@@ -68,7 +68,7 @@ RSpec.describe 'Nested Collections' do
     }
     # Using the team variable defined above
     # add "Phil" as a pitcher
-    __________
+    team[:pitchers].push("Phil")
 
     expected = {
       pitchers: ["Kenny", "Joan", "Shabaz", "Phil"],
@@ -87,7 +87,7 @@ RSpec.describe 'Nested Collections' do
     # Using the team variable defined above
     # create a new key :coaches with the value
     # of an empty array
-    _________
+    team[:coaches] = []
 
     expected = {
       pitchers: ["Kenny", "Joan", "Shabaz"],
@@ -106,7 +106,7 @@ RSpec.describe 'Nested Collections' do
     }
     # Using the team variable defined above
     # Find out how many fielders there are
-    num_fielders = ________
+    num_fielders = team[:fielders].length
     expect(num_fielders).to eq(5)
   end
 
@@ -118,7 +118,7 @@ RSpec.describe 'Nested Collections' do
     }
     # Using the team variable defined above
     # Find out if "Kenny" is a pitcher
-    kenny_is_pitcher = ________
+    kenny_is_pitcher = team[:pitchers].include?("Kenny")
     expect(kenny_is_pitcher).to eq(true)
   end
 
@@ -126,11 +126,14 @@ RSpec.describe 'Nested Collections' do
     # HINT: You may find it valuable to break the three_day_forecast variable
     # into multiple lines to make it more readable
 
-    three_day_forecast = {days: [{high: 70,low: 63,summary: "Mostly Sunny"},{high: 55,low: 47,summary: "Partly Cloudy"},{high: 77,low: 64,summary: "Sunny"}], "date" => "6-21-18",ref_num: 3456789765456787656}
+    three_day_forecast = {days: [{high: 70,low: 63,summary: "Mostly Sunny"},{high: 55,low: 47,summary: "Partly Cloudy"}, {high: 77,low: 64,summary: "Sunny"}],
+                                 "date" => "6-21-18",
+                                 ref_num: 3456789765456787656
+                               }
     # Using the three_day_forecast variable defined above,
     # retrieve the expected piece of information
 
-    actual = ________
+    actual = three_day_forecast[:ref_num]
     expected = 3456789765456787656
     expect(actual).to eq(expected)
   end
@@ -140,7 +143,7 @@ RSpec.describe 'Nested Collections' do
     # Using the three_day_forecast variable defined above,
     # retrieve the expected piece of information
 
-    actual = ________
+    actual = three_day_forecast[:days]
     expected = [{high: 70,low: 63,summary: "Mostly Sunny"},{high: 55,low: 47,summary: "Partly Cloudy"},{high: 77,low: 64,summary: "Sunny"}]
     expect(actual).to eq(expected)
   end
@@ -150,7 +153,7 @@ RSpec.describe 'Nested Collections' do
     # Using the three_day_forecast variable defined above,
     # retrieve the expected piece of information
 
-    actual = ________
+    actual =  three_day_forecast["date"]
     expected = "6-21-18"
     expect(actual).to eq(expected)
   end
@@ -160,7 +163,7 @@ RSpec.describe 'Nested Collections' do
     # Using the three_day_forecast variable defined above,
     # retrieve the expected piece of information
 
-    actual = _________
+    actual = three_day_forecast.keys
     expected = [:days, "date", :ref_num]
     expect(actual).to eq(expected)
   end
@@ -170,7 +173,7 @@ RSpec.describe 'Nested Collections' do
     # Using the three_day_forecast variable defined above,
     # retrieve the expected piece of information
 
-    actual = ________
+    actual = three_day_forecast[:days][1][:high]
     expected = 55
     expect(actual).to eq(expected)
   end
@@ -180,7 +183,7 @@ RSpec.describe 'Nested Collections' do
     # Using the three_day_forecast variable defined above,
     # retrieve the expected piece of information
 
-    actual = ________
+    actual = three_day_forecast[:days][1].keys
     expected = [:high, :low, :summary]
     expect(actual).to eq(expected)
   end
@@ -190,7 +193,7 @@ RSpec.describe 'Nested Collections' do
     # Using the three_day_forecast variable defined above,
     # retrieve the expected piece of information
 
-    actual = ________
+    actual = three_day_forecast[:days][2].values
     expected = [77, 64, "Sunny"]
     expect(actual).to eq(expected)
   end
@@ -200,7 +203,7 @@ RSpec.describe 'Nested Collections' do
     # Using the three_day_forecast variable defined above,
     # retrieve the expected piece of information
 
-    actual = _________
+    actual = three_day_forecast.keys[1]
     expected = "date"
     expect(actual).to eq(expected)
   end
@@ -209,7 +212,8 @@ RSpec.describe 'Nested Collections' do
     three_day_forecast = {days: [{high: 70,low: 63,summary: "Mostly Sunny"},{high: 55,low: 47,summary: "Partly Cloudy"},{high: 77,low: 64,summary: "Sunny"}], "date" => "6-21-18",ref_num: 3456789765456787656}
     # Using the three_day_forecast variable defined above,
     # Change the high on the fist day to 99
-    _______
+
+    three_day_forecast[:days][0][:high] = 99
     expected = {days: [{high: 99,low: 63,summary: "Mostly Sunny"},{high: 55,low: 47,summary: "Partly Cloudy"},{high: 77,low: 64,summary: "Sunny"}], "date" => "6-21-18",ref_num: 3456789765456787656}
     expect(three_day_forecast).to eq(expected)
   end
@@ -218,10 +222,8 @@ RSpec.describe 'Nested Collections' do
     three_day_forecast = {days: [{high: 70,low: 63,summary: "Mostly Sunny"},{high: 55,low: 47,summary: "Partly Cloudy"},{high: 77,low: 64,summary: "Sunny"}], "date" => "6-21-18",ref_num: 3456789765456787656}
     # Using the three_day_forecast variable defined above,
     # Add a new key "time" with the value "12:30"
-    _________
+    three_day_forecast = Hash["time" => "12:30"].merge!(three_day_forecast)
     expected = {"time" => "12:30", days: [{high: 70,low: 63,summary: "Mostly Sunny"},{high: 55,low: 47,summary: "Partly Cloudy"},{high: 77,low: 64,summary: "Sunny"}], "date" => "6-21-18",ref_num: 3456789765456787656}
     expect(three_day_forecast).to eq(expected)
   end
 end
-
-
