@@ -8,10 +8,10 @@ RSpec.describe 'sort_by' do
     expect(sorted).to eq(["Bacon", "broccoli", "candy", "Carrots", "FISH"])
   end
 
-  xit 'alphabetically by last letter' do
+  it 'alphabetically by last letter' do
     things = ["pill", "box", "glass", "water", "sponge"]
     sorted = things.sort_by do |thing|
-      # Your code goes here
+      thing.reverse
     end
     expect(sorted).to eq(["sponge", "pill", "water", "glass", "box"])
   end
@@ -22,9 +22,11 @@ RSpec.describe 'sort_by' do
     expect(sorted).to eq(["1cm", "2cm", "4cm", "9cm", "30cm"])
   end
 
-  xit 'length' do
+  it 'length' do
     words = ["heteromorph", "ancyloceratina", "bioengineering", "mathematical", "bug"]
-    # Your code goes here
+    sorted = words.sort_by do |word|
+      word.length
+    end
     expect(sorted).to eq(["bug", "heteromorph", "mathematical", "ancyloceratina", "bioengineering"])
   end
 
