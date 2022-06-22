@@ -1,4 +1,4 @@
-require_relative 'nesting'
+require_relative 'nesting.rb'
 
 # The intent of this exercise is to practice working with nested collections.
 # Some tests will be able to pass without any enumeration, and others will require
@@ -107,7 +107,7 @@ RSpec.describe 'Advanced Nested Collections' do
     # Return the full menu for Olive Garden
 
     olive_garden_menu = _____
-    
+
     expected = {
       "Risotto" => {
         :name => "Risotto",
