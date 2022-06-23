@@ -32,7 +32,7 @@ RSpec.describe 'sort_by pattern' do
     distances = ["1cm", "9cm", "30cm", "4cm", "2cm"]
     transformed = []
     distances.each do |distance|
-      transformed << [distance.partition(/cm/), distance]
+      transformed << [distance.delete("cm").to_i, distance]
     end
     transformed = transformed.sort
     sorted = []
@@ -56,15 +56,31 @@ RSpec.describe 'sort_by pattern' do
     expect(sorted).to eq(["bug", "heteromorph", "mathematical", "ancyloceratina", "bioengineering"])
   end
 
-  xit 'by proximity to ten' do
+  it 'by proximity to ten' do
     prices = [3.02, 9.91, 17.9, 10.01, 11.0]
-    # Your code goes here
+    transformed = []
+    prices.each do |price|
+      transformed << [(price - 10).abs, price]
+    end
+    transformed = transformed.sort
+    sorted = []
+    transformed.each do |sort_key, price|
+      sorted << price
+    end
     expect(sorted).to eq([10.01, 9.91, 11.0, 3.02, 17.9])
   end
 
-  xit 'by number of cents' do
+  it 'by number of cents' do
     prices = [3.02, 9.91, 7.9, 10.01, 11.0]
-    # Your code goes here
+    transformed = []
+    prices.each do |price|
+      transformed << [price.modulo(1), price]
+    end
+    tranformed = transformed.sort
+    sorted = []
+    transformed.each do |sort_key, price|
+      sorted << price
+    end
     expect(sorted).to eq([11.0, 10.01, 3.02, 7.9, 9.91])
   end
 end
