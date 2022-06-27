@@ -10,14 +10,14 @@ RSpec.describe 'group by pattern' do
     expect(grouped).to eq(expected)
   end
 
-  xit 'by odd and even' do
+  it 'by odd and even' do
     numbers = [1, 1, 2, 3, 5, 8, 13, 21, 34, 55]
     odd_and_even = Hash.new {|hash, key| hash[key] = []}
     numbers.each do |number|
-      # Your code goes here
+      odd_and_even[number.odd?] << number 
     end
     expected = {1=>[1, 1, 3, 5, 13, 21, 55], 0=>[2, 8, 34]}
-    expected(odd_and_even).to eq(expected)
+    expect(odd_and_even).to eq(expected)
   end
 
   xit 'by first letter' do
