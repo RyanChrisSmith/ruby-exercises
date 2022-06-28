@@ -42,7 +42,7 @@ RSpec.describe 'Strings' do
     # In place of the line below, call a method to achieve the expected output.
     actual = word.sub("t", "k")
     expected = "kicking"
-binding.pry
+
     expect(actual).to eq(expected)
   end
 
@@ -58,7 +58,7 @@ binding.pry
   it 'test 7' do
     words = "five sleepy kittens"
     # In place of the line below, call a method to achieve the expected output.
-    actual = words.gsub(/[e]/, '*')
+    actual = words.gsub("e", "*")
     expected = "fiv* sl**py kitt*ns"
 
     expect(actual).to eq(expected)
