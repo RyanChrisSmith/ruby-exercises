@@ -27,6 +27,7 @@ RSpec.describe 'Strings' do
     expect(actual).to eq(expected)
   end
 
+
   it 'test 4' do
     rhyme = "peter piper picked a peck of picked peppers"
     # In place of the line below, call a method to achieve the expected output.
@@ -41,7 +42,7 @@ RSpec.describe 'Strings' do
     # In place of the line below, call a method to achieve the expected output.
     actual = word.sub("t", "k")
     expected = "kicking"
-
+binding.pry
     expect(actual).to eq(expected)
   end
 
