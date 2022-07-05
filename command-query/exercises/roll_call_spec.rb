@@ -21,7 +21,7 @@ RSpec.describe RollCall do
     roll_call << "Ann"
     roll_call << "Alexandra"
     roll_call << "Roger"
-binding.pry
+
     expect(roll_call.longest_name).to eq('Alexandra')
   end
 end
