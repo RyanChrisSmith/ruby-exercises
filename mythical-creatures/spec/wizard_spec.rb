@@ -10,6 +10,7 @@ RSpec.describe Wizard do
   it 'has a different name' do
     wizard = Wizard.new('Alex')
     expect(wizard.name).to eq('Alex')
+
   end
 
   it 'is bearded by default' do
@@ -34,19 +35,30 @@ RSpec.describe Wizard do
 
   it 'starts rested' do
     # create wizard
+    wizard = Wizard.new('Jimmm', bearded: false)
     # .rested? returns true
+    expect(wizard.rested?).to be true
+
+
   end
 
   it 'can cast spells' do
     # create wizard
+    wizard = Wizard.new('Iffy')
     # .cast returns "MAGIC MISSILE!"
+    expect(wizard.cast).to eq('MAGIC MISSILE!')
   end
 
   it 'gets tired after casting three spells' do
     # create wizard
+    wizard = Wizard.new("Larry")
     # casts spell twice
+    2.times{wizard.cast}
     # check if wizard is rested
+    expect(wizard.rested?).to be true
     # casts spell
+    wizard.cast
     # check wizard is not rested
+    expect(wizard.rested?).to be false
   end
 end
