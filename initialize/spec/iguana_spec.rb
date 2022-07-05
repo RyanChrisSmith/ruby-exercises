@@ -1,4 +1,5 @@
 require 'rspec'
+require 'pry'
 require_relative '../lib/iguana'
 
 RSpec.describe Iguana do
